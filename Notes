@@ -1,0 +1,63 @@
+Notes
+
+public ThreadLocal<DesiredCapabilities> dc = new ThreadLocal<DesiredCapabilities>();
+public ThreadLocal<WebDriver> dr = new ThreadLocal<WebDriver>();
+
+public void setDesiredCapabilities(DesiredCapabilities cap) {
+		dc.set(cap);
+}
+
+public DesiredCapabilities getDesiredCapabilities() {
+		return dc.get();
+}
+
+cap = new DesiredCapabilities();
+setDesiredCapabilities(cap);
+
+getDesiredCapabilities().setPlatform(Platform.ANY);
+getDesiredCapabilities().setBrowserName("chrome");
+
+getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+	@Test(dataProvider = "getData")
+	public void launchBrowser(String browser, String username) throws MalformedURLException {
+	
+
+	@DataProvider(parallel = true)
+	public Object[][] getData() {
+
+		Object[][] data = new Object[2][2];
+
+		data[0][0] = "chrome";
+		data[0][1] = "trainer@way2automation.com";
+
+		data[1][0] = "firefox";
+		data[1][1] = "seleniumcoaching@gmail.com";
+
+		return data;
+	}
+	
+Actions actObj = new Actions(driver);
+actObj.sendKeys(Keys.chord(Keys.CONTROL, "s")).build();
+
+WebDriverWait wait = new WebDriverWait(driver,5);
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//")))
+
+((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'Center'});", xpath);
+js.executeScript("window.scrollBy(0,-110)");
+js.executeScript("arguments[0].scrollIntoView();", driver.findElement(By.xpath(xpath)));
+
+Robot robot = new Robot();
+robot.keyPress(KeyEvent.VK_ENTER);
+robot.keyRelease(KeyEvent.VK_ENTER);
+
+Set winids = driver.getWindowHandles();
+Iterator iterate = winids.iterator();
+System.out.println(iterate.next()); // first window
+String second_window = iterate.next(); // second window
+System.out.println(second_window); 
+driver.switchTo().window(second_window);
+
+driver.switchTo().frame("iframeResult");
+driver.switchTo().defaultContent();
+	
