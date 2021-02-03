@@ -14,6 +14,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.Status;
+
+import utitilities.ExtentReport;
+import utitilities.TestData;
+
 public class AppTest extends Base {
 
 	public WebDriver driver;
@@ -24,8 +29,11 @@ public class AppTest extends Base {
 		System.out.println("setup");
 	}
 
-	@Test
-	public void test() {
+	@Test(dataProviderClass=TestData.class,dataProvider="getTableData")
+	public void test(String name,String lastname,String age) {
+		test=ExtentReport.createTest("sample<not threaded");
+		setTest(test);
+		getTest().log(Status.PASS, "Test");
 		cap = new DesiredCapabilities();
 		setDesiredCapabilities(cap);
 		getDesiredCapabilities().setPlatform(Platform.ANY);
