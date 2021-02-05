@@ -17,7 +17,7 @@ public class Base {
 	public ThreadLocal<DesiredCapabilities> dc = new ThreadLocal<DesiredCapabilities>();
 	public ThreadLocal<ExtentTest> tests = new ThreadLocal<ExtentTest>();
 	ExtentTest test;
-	Date today;
+	public static String folder;
 	
 	public WebDriver getDriver() {
 		return dr.get();
@@ -44,8 +44,10 @@ public class Base {
 
 	@BeforeSuite
 	public void suiteSetup() {
+		Date today;
 		today=new Date();
-		ExtentReport.createReport(today.toString().replace(":", "").replace("-", "_"));
+		folder=today.toString().replace(":", "").replace("-", "_");
+		ExtentReport.createReport(folder);
 		System.out.println("suite setup");
 	}
 

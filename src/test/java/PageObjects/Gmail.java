@@ -41,6 +41,7 @@ public class Gmail extends Page {
 			e.printStackTrace();
 		}
 		next.click();
+		
 	}
 
 }

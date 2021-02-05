@@ -27,8 +27,12 @@ public class ExtentReport {
 
 		folder = System.getProperty("user.dir") + "\\" + report.getProperty("report") + "\\" + folder + "\\";
 		File newfile = new File(folder);
-		folder += report.getProperty("name");
 		newfile.mkdir();
+		File images=new File(folder+"images");
+		images.mkdir();
+		folder += report.getProperty("name");
+	
+		
 		htmlReporter = new ExtentHtmlReporter(folder);
 		htmlReporter.config().setEncoding("utf-8");
 		htmlReporter.config().setDocumentTitle("QA Automation");
