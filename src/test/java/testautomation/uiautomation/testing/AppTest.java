@@ -16,6 +16,7 @@ import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
 
+import PageObjects.Gmail;
 import utitilities.ExtentReport;
 import utitilities.TestData;
 
@@ -29,9 +30,9 @@ public class AppTest extends Base {
 		System.out.println("setup");
 	}
 
-	@Test(dataProviderClass=TestData.class,dataProvider="getTableData")
-	public void test(String name,String lastname,String age) {
-		test=ExtentReport.createTest("sample<not threaded");
+	@Test(dataProviderClass = TestData.class, dataProvider = "getTableData")
+	public void test(String name, String lastname, String age) {
+		test = ExtentReport.createTest("sample<not threaded");
 		setTest(test);
 		getTest().log(Status.PASS, "Test");
 		cap = new DesiredCapabilities();
@@ -49,11 +50,10 @@ public class AppTest extends Base {
 			e.printStackTrace();
 		}
 		setWebDriver(driver);
-		getDriver().get("http://gmail.com");
-		getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		getDriver().manage().window().maximize();
-		getDriver().close();
-		System.out.println("Parameter:");
+		Gmail gmail = new Gmail(getDriver());
+		gmail.openURL();
+		gmail.submitEmail("sihle.matanzima@gmail.com");
+		gmail.close();
 	}
 
 	@AfterMethod

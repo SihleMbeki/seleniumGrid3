@@ -9,7 +9,7 @@
           <include name="suiteSetup"/>
           <include name="setup"/>
           <include name="teardown"/>
-          <include name="test"/>
+          <include name="test" invocation-numbers="0"/>
         </methods>
       </class> <!-- testautomation.uiautomation.testing.AppTest -->
     </classes>

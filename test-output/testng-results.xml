@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-02-03T21:13:19Z" name="Default suite" finished-at="2021-02-03T21:13:29Z" duration-ms="10161">
+  <suite started-at="2021-02-05T10:24:49Z" name="Default suite" finished-at="2021-02-05T10:25:00Z" duration-ms="10712">
     <groups>
     </groups>
-    <test started-at="2021-02-03T21:13:19Z" name="Default test" finished-at="2021-02-03T21:13:29Z" duration-ms="10161">
+    <test started-at="2021-02-05T10:24:49Z" name="Default test" finished-at="2021-02-05T10:25:00Z" duration-ms="10712">
       <class name="testautomation.uiautomation.testing.AppTest">
-        <test-method is-config="true" signature="suiteSetup()[pri:0, instance:testautomation.uiautomation.testing.AppTest@398dada8]" started-at="2021-02-03T21:13:19Z" name="suiteSetup" finished-at="2021-02-03T21:13:19Z" duration-ms="207" status="PASS">
+        <test-method is-config="true" signature="suiteSetup()[pri:0, instance:testautomation.uiautomation.testing.AppTest@398dada8]" started-at="2021-02-05T10:24:49Z" name="suiteSetup" finished-at="2021-02-05T10:24:49Z" duration-ms="233" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- suiteSetup -->
-        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:testautomation.uiautomation.testing.AppTest@398dada8]" started-at="2021-02-03T21:13:19Z" name="setup" finished-at="2021-02-03T21:13:19Z" duration-ms="3" status="PASS">
+        <test-method is-config="true" signature="setup(java.lang.reflect.Method)[pri:0, instance:testautomation.uiautomation.testing.AppTest@398dada8]" started-at="2021-02-05T10:24:49Z" name="setup" finished-at="2021-02-05T10:24:49Z" duration-ms="4" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -22,7 +22,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="test(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:testautomation.uiautomation.testing.AppTest@398dada8]" started-at="2021-02-03T21:13:19Z" name="test" data-provider="getTableData" finished-at="2021-02-03T21:13:29Z" duration-ms="10082" status="PASS">
+        <test-method signature="test(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:testautomation.uiautomation.testing.AppTest@398dada8]" started-at="2021-02-05T10:24:49Z" name="test" data-provider="getTableData" finished-at="2021-02-05T10:25:00Z" duration-ms="10663" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -43,7 +43,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test -->
-        <test-method is-config="true" signature="teardown(java.lang.reflect.Method)[pri:0, instance:testautomation.uiautomation.testing.AppTest@398dada8]" started-at="2021-02-03T21:13:29Z" name="teardown" finished-at="2021-02-03T21:13:29Z" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="teardown(java.lang.reflect.Method)[pri:0, instance:testautomation.uiautomation.testing.AppTest@398dada8]" started-at="2021-02-05T10:25:00Z" name="teardown" finished-at="2021-02-05T10:25:00Z" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -54,7 +54,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-        <test-method is-config="true" signature="suiteCleanup()[pri:0, instance:testautomation.uiautomation.testing.AppTest@398dada8]" started-at="2021-02-03T21:13:29Z" name="suiteCleanup" finished-at="2021-02-03T21:13:29Z" duration-ms="318" status="PASS">
+        <test-method is-config="true" signature="suiteCleanup()[pri:0, instance:testautomation.uiautomation.testing.AppTest@398dada8]" started-at="2021-02-05T10:25:00Z" name="suiteCleanup" finished-at="2021-02-05T10:25:00Z" duration-ms="389" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- suiteCleanup -->
