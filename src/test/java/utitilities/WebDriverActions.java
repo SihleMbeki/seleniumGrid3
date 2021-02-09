@@ -58,7 +58,7 @@ public class WebDriverActions {
 
 	public String takeScreenshot() {
 		Date date = new Date();
-		String fileName = System.getProperty("user.dir") + "\\" + Base.folder + "\\images\\"
+		String fileName =  ExtentReport.baseDirectory + "images\\"
 				+ date.toString().replace(":", "_").replace(" ", "") + ".jpg";
 		try {
 			File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);

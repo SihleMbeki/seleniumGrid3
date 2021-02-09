@@ -1,7 +1,11 @@
 package testautomation.uiautomation.testing;
 
+import java.io.File;
 import java.util.Date;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterSuite;
@@ -13,26 +17,43 @@ import utitilities.ExtentReport;
 
 public class Base {
 	
-	public ThreadLocal<WebDriver> dr = new ThreadLocal<WebDriver>();
+	public static ThreadLocal<WebDriver> dr = new ThreadLocal<WebDriver>();
 	public ThreadLocal<DesiredCapabilities> dc = new ThreadLocal<DesiredCapabilities>();
-	public ThreadLocal<ExtentTest> tests = new ThreadLocal<ExtentTest>();
-	ExtentTest test;
+
 	public static String folder;
-	
-	public WebDriver getDriver() {
-		return dr.get();
-	}
-	public ExtentTest getTest() {
+
+	public static ThreadLocal<ExtentTest> tests = new ThreadLocal<ExtentTest>();
+
+	public static ExtentTest getTest() {
 		return tests.get();
 	}
 
+	public static void setTest(ExtentTest test) {
+		tests.set(test);
+	}
+	
+	
+	public static WebDriver getDriver() {
+		return dr.get();
+	}
+
+	public String takeScreenshot(WebDriver driver) {
+		Date date = new Date();
+		String fileName =  ExtentReport.baseDirectory + "images\\"
+				+ date.toString().replace(":", "_").replace(" ", "") + ".jpg";
+		try {
+			File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(screenshot, new File(fileName));
+			return fileName;
+		} catch (Exception E) {
+			return fileName;
+		}
+	}
 
 	public void setWebDriver(WebDriver driver) {
 		dr.set(driver);
 	}
-	public void setTest(ExtentTest test) {
-		tests.set(test);
-	}
+
 
 	public DesiredCapabilities getDesiredCapabilities() {
 		return dc.get();
@@ -53,6 +74,7 @@ public class Base {
 
 	@AfterSuite
 	public void suiteCleanup() {
+		if(ExtentReport.reports!=null)
 		ExtentReport.closeReport();
 		System.out.println("suite Cleanup");
 	}

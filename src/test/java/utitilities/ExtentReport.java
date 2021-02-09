@@ -10,14 +10,19 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 public class ExtentReport {
-	private static ExtentReports reports;
-	public static ExtentTest test;
+	public static ExtentReports reports;
 	private static ExtentHtmlReporter htmlReporter;
 	private static Properties report = new Properties();
 
+	
+	
+	
+	public static String baseDirectory;
+
+
 	public static void createReport(String folder) {
+		String file;
 		try {
-			;
 			InputStream input = new FileInputStream(
 					System.getProperty("user.dir") + "\\src\\test\\java\\utitilities\\extent.properties");
 			report.load(input);
@@ -25,25 +30,25 @@ public class ExtentReport {
 			System.out.println("Failed to read property");
 		}
 
-		folder = System.getProperty("user.dir") + "\\" + report.getProperty("report") + "\\" + folder + "\\";
-		File newfile = new File(folder);
+		baseDirectory = System.getProperty("user.dir") + "\\" + report.getProperty("report") + "\\" + folder + "\\";
+		File newfile = new File(baseDirectory);
 		newfile.mkdir();
-		File images=new File(folder+"images");
-		images.mkdir();
-		folder += report.getProperty("name");
+		//String images=folder+"images";
+		//File image=new File(images);
+		//image.mkdir();
+		file =baseDirectory+ report.getProperty("name");
 	
 		
-		htmlReporter = new ExtentHtmlReporter(folder);
+		htmlReporter = new ExtentHtmlReporter(file);
 		htmlReporter.config().setEncoding("utf-8");
-		htmlReporter.config().setDocumentTitle("QA Automation");
-		htmlReporter.config().setReportName("Way2Automation");
+		htmlReporter.config().setDocumentTitle("Gmail Automation");
+		htmlReporter.config().setReportName("Test Automation");
 		reports = new ExtentReports();
 		reports.attachReporter(htmlReporter);
 	}
 
 	public static ExtentTest createTest(String testName) {
-		test = reports.createTest(testName);
-		return test;
+	return reports.createTest(testName);
 	}
 
 	public static void closeReport() {

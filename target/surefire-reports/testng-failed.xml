@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [AllTests]" guice-stage="DEVELOPMENT" verbose="0">
+  <listeners>
+    <listener class-name="utitilities.Listener"/>
+  </listeners>
+  <test thread-count="5" name="All(failed)" verbose="0">
+    <classes>
+      <class name="testautomation.uiautomation.testing.AppTest">
+        <methods>
+          <include name="login" invocation-numbers="1"/>
+          <include name="suiteCleanup"/>
+          <include name="suiteSetup"/>
+          <include name="setup"/>
+          <include name="teardown"/>
+        </methods>
+      </class> <!-- testautomation.uiautomation.testing.AppTest -->
+    </classes>
+  </test> <!-- All(failed) -->
+</suite> <!-- Failed suite [AllTests] -->

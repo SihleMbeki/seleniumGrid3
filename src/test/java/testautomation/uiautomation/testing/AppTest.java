@@ -10,10 +10,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
@@ -36,11 +38,8 @@ public class AppTest extends Base {
 	}
 
 	@Test(dataProviderClass = TestData.class, dataProvider = "getTableData")
-	public void test(String name, String lastname, String age) {
-
-		test = ExtentReport.createTest("sample<not threaded");
-		setTest(test);
-		getTest().log(Status.PASS, "Test");
+	public void login(String name, String lastname, String age) {
+	 
 		cap = new DesiredCapabilities();
 		setDesiredCapabilities(cap);
 		getDesiredCapabilities().setPlatform(Platform.ANY);
@@ -59,21 +58,7 @@ public class AppTest extends Base {
 		Gmail gmail = new Gmail(getDriver());
 		gmail.openURL();
 		gmail.submitEmail("sihle.matanzima@gmail.com");
-		// gmail.close();
-
-		WebDriverActions actions = new WebDriverActions(getDriver());
-		Markup label = MarkupHelper.createLabel("Test Finished", ExtentColor.GREEN);
-		try {
-			getTest().log(Status.PASS, "taking screenshot");
-			getTest().pass("Screenshot",
-					MediaEntityBuilder.createScreenCaptureFromPath(actions.takeScreenshot()).build());
-		} catch (Exception e) {
-
-			e.printStackTrace();
-			getDriver().close();
-		}
-		getTest().log(Status.PASS, label);
-		gmail.close();
+		
 	}
 
 	@AfterMethod
