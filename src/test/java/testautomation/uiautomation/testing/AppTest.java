@@ -29,7 +29,7 @@ import utitilities.WebDriverActions;
 
 public class AppTest extends Base {
 
-	public WebDriver driver;
+	public RemoteWebDriver driver;
 	public DesiredCapabilities cap;
 
 	@BeforeMethod
@@ -55,9 +55,10 @@ public class AppTest extends Base {
 			e.printStackTrace();
 		}
 		setWebDriver(driver);
-		Gmail gmail = new Gmail(getDriver());
+		Gmail gmail = new Gmail();
 		gmail.openURL();
 		gmail.submitEmail("sihle.matanzima@gmail.com");
+		//gmail.close();
 		
 	}
 

@@ -8,7 +8,7 @@
     <classes>
       <class name="testautomation.uiautomation.testing.AppTest">
         <methods>
-          <include name="login" invocation-numbers="1"/>
+          <include name="login" invocation-numbers="1 0"/>
           <include name="suiteCleanup"/>
           <include name="suiteSetup"/>
           <include name="setup"/>

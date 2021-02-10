@@ -17,22 +17,15 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import testautomation.uiautomation.testing.Base;
 
-public class WebDriverActions {
-	WebDriver driver;
+public class WebDriverActions extends Base{
 
-	public WebDriverActions(WebDriver driver) {
-		this.driver = driver;
-	}
-
-	public WebDriver getDriver() {
-		return driver;
-	}
 
 	public boolean sendKeys(WebElement element, String value) {
 
@@ -48,7 +41,7 @@ public class WebDriverActions {
 
 	public boolean scrollUpByPixels() {
 		try {
-			((JavascriptExecutor) driver).executeScript("window.scrollBy(0,110)");
+			((JavascriptExecutor) getDriver()).executeScript("window.scrollBy(0,110)");
 			return true;
 		} catch (Exception e) {
 			System.out.println("No such Element");
@@ -56,22 +49,11 @@ public class WebDriverActions {
 		}
 	}
 
-	public String takeScreenshot() {
-		Date date = new Date();
-		String fileName =  ExtentReport.baseDirectory + "images\\"
-				+ date.toString().replace(":", "_").replace(" ", "") + ".jpg";
-		try {
-			File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(screenshot, new File(fileName));
-			return fileName;
-		} catch (Exception E) {
-			return fileName;
-		}
-	}
+
 
 	public boolean scrollToElement(String xpath) {
 		try {
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'Center'});", xpath);
+			((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView({block:'Center'});", xpath);
 			return true;
 		} catch (Exception e) {
 			System.out.println("No such Element");
@@ -81,7 +63,7 @@ public class WebDriverActions {
 
 	public boolean scrollDownByPixels() {
 		try {
-			((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-110)");
+			((JavascriptExecutor) getDriver()).executeScript("window.scrollBy(0,-110)");
 			return true;
 		} catch (Exception e) {
 			System.out.println("No such Element");
@@ -103,7 +85,7 @@ public class WebDriverActions {
 
 	public boolean switchToDefaultContent() {
 		try {
-			driver.switchTo().defaultContent();
+			getDriver().switchTo().defaultContent();
 			return true;
 		} catch (Exception e) {
 			System.out.println("No such Element");
@@ -113,7 +95,7 @@ public class WebDriverActions {
 
 	public boolean switchToFrame(String frame) {
 		try {
-			driver.switchTo().frame(frame);
+			getDriver().switchTo().frame(frame);
 			return true;
 		} catch (Exception e) {
 			System.out.println("No such Element");
@@ -123,11 +105,11 @@ public class WebDriverActions {
 
 	public boolean switchToSecondTab(String frame) {
 		try {
-			Set winids = driver.getWindowHandles();
+			Set winids = getDriver().getWindowHandles();
 			Iterator iterate = winids.iterator();
 			System.out.println(iterate.next()); // first window
 			String second_window = (String) iterate.next(); // second window
-			driver.switchTo().window(second_window);
+			getDriver().switchTo().window(second_window);
 			return true;
 		} catch (Exception e) {
 			System.out.println("No such Element");
@@ -137,7 +119,7 @@ public class WebDriverActions {
 
 	public boolean waitForVisible(String xpath) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 5);
+			WebDriverWait wait = new WebDriverWait(getDriver(), 5);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 			return true;
 		} catch (Exception e) {
@@ -148,7 +130,7 @@ public class WebDriverActions {
 
 	public boolean waitClickable(String xpath) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 5);
+			WebDriverWait wait = new WebDriverWait(getDriver(), 5);
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)));
 			return true;
 		} catch (Exception e) {
@@ -170,7 +152,7 @@ public class WebDriverActions {
 
 	public boolean contextClick(WebElement element) {
 		try {
-			Actions action = new Actions(driver);
+			Actions action = new Actions(getDriver());
 			action.contextClick(element).perform();
 			return true;
 		} catch (Exception e) {
@@ -178,4 +160,5 @@ public class WebDriverActions {
 			return false;
 		}
 	}
+	
 }

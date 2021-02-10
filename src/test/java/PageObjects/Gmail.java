@@ -4,9 +4,12 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
+
+import testautomation.uiautomation.testing.Base;
 
 public class Gmail extends Page {
 
@@ -16,20 +19,16 @@ public class Gmail extends Page {
 	@FindBy(xpath = "//span[text()='Next']/..")
 	public WebElement next;
 
-	public Gmail(WebDriver driver) {
-		super(driver);
-		AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(driver, 10);
-		PageFactory.initElements(driver, this);
+	public Gmail() {
+		super();
+		AjaxElementLocatorFactory factory = new AjaxElementLocatorFactory(Base.getDriver(), 10);
+		PageFactory.initElements(Base.getDriver(), this);
 	}
 	
 	public void openURL() {
 		driver.getDriver().get("http://gmail.com");
 		driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.getDriver().manage().window().maximize();
-	}
-	
-	public void close() {
-		driver.getDriver().close();
 	}
 
 	public void submitEmail(String email) {

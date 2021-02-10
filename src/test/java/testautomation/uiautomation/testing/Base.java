@@ -8,6 +8,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -34,7 +35,7 @@ public class Base {
 	
 	
 	public static WebDriver getDriver() {
-		return dr.get();
+		return (WebDriver) dr.get();
 	}
 
 	public String takeScreenshot(WebDriver driver) {
@@ -50,7 +51,7 @@ public class Base {
 		}
 	}
 
-	public void setWebDriver(WebDriver driver) {
+	public void setWebDriver(RemoteWebDriver driver) {
 		dr.set(driver);
 	}
 

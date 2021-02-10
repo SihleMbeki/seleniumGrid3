@@ -14,42 +14,11 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import testautomation.uiautomation.testing.Base;
 
 public class Listener extends Base implements ITestListener {
-	public static ThreadLocal<ExtentTest> tests = new ThreadLocal<ExtentTest>();
 
-	public static ExtentTest getTest() {
-		return tests.get();
-	}
-
-	public static void setTest(ExtentTest test) {
-		tests.set(test);
-	}
 
 	@Override
 	public void onFinish(ITestContext arg0) {
-//		System.out.println("Listener class");
-//		try {
-//			if (getTest() == null)
-//				System.out.println("Empty test");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-////		
-//		WebDriverActions actions = new WebDriverActions(getDriver());
-//		Markup label = MarkupHelper.createLabel("Test Finished", ExtentColor.GREEN);
-//		getTest().log(Status.PASS, label);
-//		try {
-//			System.out.println("Failed to take screenshot:" + actions.takeScreenshot());
-////			getTest().pass("Screenshot",
-////					MediaEntityBuilder.createScreenCaptureFromPath(actions.takeScreenshot()).build());
-//		} catch (Exception e) {
-//
-//			e.printStackTrace();
-//			if (getDriver() != null)
-//				getDriver().close();
-//		}
-//		// ExtentReport.getTest().log(Status.PASS, label);
-//		if (Base.getDriver() != null)
-//			Base.getDriver().close();
+
 
 	}
 
@@ -105,8 +74,8 @@ public class Listener extends Base implements ITestListener {
 			e.printStackTrace();
 
 		}
-		if (Base.getDriver() != null)
-			Base.getDriver().close();
+		if (getDriver() != null)
+			getDriver().close();
 		
 		
 
